@@ -22,51 +22,31 @@ const tools = [
     title: "Team Auto-Assembler",
     description: "AI-powered team building based on skills and interests.",
     href: "/team-builder",
-    icon: <Users className="h-8 w-8 text-primary" />,
-    image: {
-      src: "https://placehold.co/600x400.png",
-      hint: "collaboration teamwork"
-    }
+    icon: <Users className="h-12 w-12 text-primary" />,
   },
   {
     title: "Project Idea Generator",
     description: "Spark creativity with AI-generated hackathon ideas.",
     href: "/idea-generator",
-    icon: <Lightbulb className="h-8 w-8 text-primary" />,
-    image: {
-      src: "https://placehold.co/600x400.png",
-      hint: "innovation lightbulb"
-    }
+    icon: <Lightbulb className="h-12 w-12 text-primary" />,
   },
   {
     title: "Project Management Boards",
     description: "Kanban-style boards to track your hackathon progress.",
     href: "/projects",
-    icon: <FolderKanban className="h-8 w-8 text-primary" />,
-    image: {
-      src: "https://placehold.co/600x400.png",
-      hint: "project management"
-    }
+    icon: <FolderKanban className="h-12 w-12 text-primary" />,
   },
   {
     title: "Resource Marketplace",
     description: "Discover APIs, libraries, and tools for your project.",
     href: "/resources",
-    icon: <PackageSearch className="h-8 w-8 text-primary" />,
-    image: {
-      src: "https://placehold.co/600x400.png",
-      hint: "code library"
-    }
+    icon: <PackageSearch className="h-12 w-12 text-primary" />,
   },
   {
     title: "Post-Hackathon Archiving",
     description: "Archive and document your projects after the event.",
     href: "/archive",
-    icon: <Archive className="h-8 w-8 text-primary" />,
-    image: {
-      src: "https://placehold.co/600x400.png",
-      hint: "data archive"
-    }
+    icon: <Archive className="h-12 w-12 text-primary" />,
   },
 ];
 
@@ -78,19 +58,16 @@ export default function DashboardPage() {
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {tools.map((tool) => (
             <Link href={tool.href} key={tool.title} className="group">
-              <Card className="h-full overflow-hidden transition-all group-hover:shadow-lg group-hover:-translate-y-1">
-                <div className="relative h-40 w-full">
-                  <Image src={tool.image.src} alt={tool.title} fill className="object-cover" data-ai-hint={tool.image.hint} />
-                </div>
+              <Card className="h-full flex flex-col justify-between overflow-hidden transition-all group-hover:shadow-lg group-hover:-translate-y-1">
                 <CardHeader>
-                  <div className="flex items-center gap-4">
-                    {tool.icon}
-                    <div>
-                      <CardTitle>{tool.title}</CardTitle>
-                      <CardDescription>{tool.description}</CardDescription>
-                    </div>
-                  </div>
+                    <CardTitle>{tool.title}</CardTitle>
+                    <CardDescription>{tool.description}</CardDescription>
                 </CardHeader>
+                <CardContent>
+                    <div className="flex justify-end">
+                        {tool.icon}
+                    </div>
+                </CardContent>
               </Card>
             </Link>
           ))}
