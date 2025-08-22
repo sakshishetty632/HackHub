@@ -3,7 +3,7 @@ import { Header } from "@/components/header";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Package, Shapes, Bot, Palette, PackageSearch } from "lucide-react";
+import { Package, Shapes, Bot, Palette, Search } from "lucide-react";
 import Image from "next/image";
 
 const resourceCategories = {
@@ -11,22 +11,19 @@ const resourceCategories = {
     {
       title: "Stripe API",
       description: "Payment processing for internet businesses.",
-      icon: <Package className="w-6 h-6" />,
-      image: "https://placehold.co/100x100.png",
+      icon: <Package className="w-8 h-8 text-primary" />,
       hint: "payment finance",
     },
     {
       title: "Google Maps API",
       description: "Add maps, location data, and routing to your app.",
-      icon: <Package className="w-6 h-6" />,
-      image: "https://placehold.co/100x100.png",
+      icon: <Package className="w-8 h-8 text-primary" />,
       hint: "map location",
     },
     {
       title: "Twilio API",
       description: "Build voice, video, and messaging applications.",
-      icon: <Package className="w-6 h-6" />,
-      image: "https://placehold.co/100x100.png",
+      icon: <Package className="w-8 h-8 text-primary" />,
       hint: "communication messaging",
     },
   ],
@@ -34,15 +31,13 @@ const resourceCategories = {
      {
       title: "Firebase Genkit",
       description: "Build, deploy, and monitor AI flows with ease.",
-      icon: <Bot className="w-6 h-6" />,
-      image: "https://placehold.co/100x100.png",
+      icon: <Bot className="w-8 h-8 text-primary" />,
       hint: "AI development",
     },
     {
       title: "Hugging Face",
       description: "Access thousands of pretrained models for NLP, vision, and more.",
-      icon: <Bot className="w-6 h-6" />,
-      image: "https://placehold.co/100x100.png",
+      icon: <Bot className="w-8 h-8 text-primary" />,
       hint: "machine learning",
     },
   ],
@@ -50,15 +45,13 @@ const resourceCategories = {
     {
       title: "shadcn/ui",
       description: "Beautifully designed components you can copy and paste.",
-      icon: <Palette className="w-6 h-6" />,
-      image: "https://placehold.co/100x100.png",
+      icon: <Palette className="w-8 h-8 text-primary" />,
       hint: "UI design",
     },
     {
       title: "Material-UI",
       description: "React components for faster and easier web development.",
-      icon: <Palette className="w-6 h-6" />,
-      image: "https://placehold.co/100x100.png",
+      icon: <Palette className="w-8 h-8 text-primary" />,
       hint: "web development",
     },
   ],
@@ -66,27 +59,26 @@ const resourceCategories = {
     {
       title: "Sketchfab",
       description: "Publish, share, and discover 3D content.",
-      icon: <Shapes className="w-6 h-6" />,
-      image: "https://placehold.co/100x100.png",
+      icon: <Shapes className="w-8 h-8 text-primary" />,
       hint: "3D model",
     },
   ],
 };
 
-type Resource = (typeof resourceCategories)["APIs"][0];
+type Resource = {
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+  hint: string;
+};
 
 function ResourceCard({ resource }: { resource: Resource }) {
   return (
     <Card className="hover:shadow-md transition-shadow">
       <CardContent className="flex items-center gap-4 p-4">
-        <Image
-          src={resource.image}
-          alt={resource.title}
-          width={64}
-          height={64}
-          className="rounded-lg"
-          data-ai-hint={resource.hint}
-        />
+        <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-secondary">
+            {resource.icon}
+        </div>
         <div className="flex-1">
           <h3 className="font-semibold">{resource.title}</h3>
           <p className="text-sm text-muted-foreground">{resource.description}</p>
@@ -104,7 +96,7 @@ export default function ResourcesPage() {
         <div className="space-y-6">
           <div className="relative">
             <Input placeholder="Search resources..." className="pl-10" />
-            <PackageSearch className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
           </div>
 
           <Tabs defaultValue="APIs" className="w-full">
