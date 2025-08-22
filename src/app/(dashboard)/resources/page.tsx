@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Package, Shapes, Bot, Palette, Search } from "lucide-react";
-import Image from "next/image";
+import Link from "next/link";
 
 const resourceCategories = {
   APIs: [
@@ -13,18 +13,21 @@ const resourceCategories = {
       description: "Payment processing for internet businesses.",
       icon: <Package className="w-8 h-8 text-primary" />,
       hint: "payment finance",
+      link: "https://stripe.com/docs/api",
     },
     {
       title: "Google Maps API",
       description: "Add maps, location data, and routing to your app.",
       icon: <Package className="w-8 h-8 text-primary" />,
       hint: "map location",
+      link: "https://developers.google.com/maps",
     },
     {
       title: "Twilio API",
       description: "Build voice, video, and messaging applications.",
       icon: <Package className="w-8 h-8 text-primary" />,
       hint: "communication messaging",
+      link: "https://www.twilio.com/docs",
     },
   ],
   "AI / ML": [
@@ -33,12 +36,14 @@ const resourceCategories = {
       description: "Build, deploy, and monitor AI flows with ease.",
       icon: <Bot className="w-8 h-8 text-primary" />,
       hint: "AI development",
+      link: "https://firebase.google.com/docs/genkit",
     },
     {
       title: "Hugging Face",
       description: "Access thousands of pretrained models for NLP, vision, and more.",
       icon: <Bot className="w-8 h-8 text-primary" />,
       hint: "machine learning",
+      link: "https://huggingface.co/docs",
     },
   ],
   "UI Kits": [
@@ -47,12 +52,14 @@ const resourceCategories = {
       description: "Beautifully designed components you can copy and paste.",
       icon: <Palette className="w-8 h-8 text-primary" />,
       hint: "UI design",
+      link: "https://ui.shadcn.com/",
     },
     {
       title: "Material-UI",
       description: "React components for faster and easier web development.",
       icon: <Palette className="w-8 h-8 text-primary" />,
       hint: "web development",
+      link: "https://mui.com/",
     },
   ],
   "3D Assets": [
@@ -61,6 +68,7 @@ const resourceCategories = {
       description: "Publish, share, and discover 3D content.",
       icon: <Shapes className="w-8 h-8 text-primary" />,
       hint: "3D model",
+      link: "https://sketchfab.com/",
     },
   ],
 };
@@ -70,6 +78,7 @@ type Resource = {
   description: string;
   icon: React.ReactNode;
   hint: string;
+  link: string;
 };
 
 function ResourceCard({ resource }: { resource: Resource }) {
@@ -111,7 +120,9 @@ export default function ResourcesPage() {
               <TabsContent key={category} value={category}>
                 <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                   {resources.map((resource) => (
-                    <ResourceCard key={resource.title} resource={resource} />
+                    <Link href={resource.link} key={resource.title} target="_blank" rel="noopener noreferrer" className="group">
+                      <ResourceCard resource={resource} />
+                    </Link>
                   ))}
                 </div>
               </TabsContent>
