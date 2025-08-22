@@ -1,6 +1,7 @@
 "use client";
 
-import { useFormState, useFormStatus } from "react-dom";
+import { useActionState, useEffect } from "react";
+import { useFormStatus } from "react-dom";
 import { assembleTeam, type FormState } from "../actions";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -9,7 +10,6 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Loader2, Users, Lightbulb, ClipboardCheck, AlertCircle } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
 
 function SubmitButton() {
@@ -30,7 +30,7 @@ function SubmitButton() {
 
 export function TeamBuilderClient() {
   const initialState: FormState = null;
-  const [state, formAction] = useFormState(assembleTeam, initialState);
+  const [state, formAction] = useActionState(assembleTeam, initialState);
   const { toast } = useToast();
 
   useEffect(() => {
