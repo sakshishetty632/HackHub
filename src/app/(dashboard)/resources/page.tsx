@@ -2,7 +2,7 @@ import { Header } from "@/components/header";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Package, Shapes, Bot, Palette } from "lucide-react";
+import { Package, Shapes, Bot, Palette, PackageSearch } from "lucide-react";
 import Image from "next/image";
 
 const resourceCategories = {
