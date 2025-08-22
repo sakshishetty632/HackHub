@@ -11,6 +11,7 @@ import {
   Settings,
   Users,
   CodeXml,
+  Feather,
 } from "lucide-react";
 import {
   Sidebar,
@@ -28,6 +29,7 @@ const menuItems = [
   { href: "/", title: "Dashboard", icon: LayoutDashboard },
   { href: "/team-builder", title: "Team Assembler", icon: Users },
   { href: "/idea-generator", title: "Idea Generator", icon: Lightbulb },
+  { href: "/blog-generator", title: "Blog Generator", icon: Feather },
   { href: "/projects", title: "Projects", icon: FolderKanban },
   { href: "/resources", title: "Resources", icon: PackageSearch },
   { href: "/archive", title: "Archive", icon: Archive },
@@ -66,7 +68,7 @@ export function SiteSidebar() {
       <SidebarFooter>
         <div className="flex items-center gap-2 p-2">
           <Avatar className="h-9 w-9">
-            <AvatarImage src="https://placehold.co/40x40.png" alt="@hackerman" />
+            <AvatarImage src="https://placehold.co/40x40.png" alt="@hackerman" data-ai-hint="male avatar" />
             <AvatarFallback>U</AvatarFallback>
           </Avatar>
           <div className="grid gap-0.5 text-xs">
