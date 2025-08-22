@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useEffect } from "react";
+import { useActionState, useEffect, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { createBlogPost, type FormState } from "../actions";
 import { Button } from "@/components/ui/button";
@@ -26,8 +26,39 @@ function SubmitButton() {
   );
 }
 
+const initialBlog = {
+    title: "Introducing HackHub: Your All-in-One Hackathon Companion",
+    content: `
+Hackathons are a whirlwind of innovation, collaboration, and caffeine-fueled creativity. But let's face it, they can also be chaotic. From finding the right team to brainstorming a winning idea and managing your project under pressure, the challenges are real. That's where HackHub comes in.
+
+HackHub is a comprehensive toolkit designed to streamline your hackathon experience from start to finish. It's your central hub for ideas, team formation, project management, and more, all powered by cutting-edge AI.
+
+## Key Features of HackHub
+
+### 1. Team Auto-Assembler
+Struggling to find teammates with the right skills? Our AI-powered Team Auto-Assembler takes the guesswork out of team formation. Simply input your skills, interests, and availability, and the AI will suggest potential team members and roles, ensuring you build a balanced and effective team.
+
+### 2. Project Idea Generator
+Writer's block, but for hackathon ideas? We've got you covered. The Project Idea Generator uses AI to spark creativity. Just enter a trend or technology (like "Generative AI" or "Web3"), and it will generate unique and inspiring project ideas complete with a description and suggested tech stack.
+
+### 3. Project Management Boards
+Keep your project on track with our intuitive Kanban-style boards. You can create tasks, assign them to team members, and move them through "To Do," "In Progress," and "Done" columns. With real-time database integration, your entire team stays in sync.
+
+### 4. Resource Marketplace
+Don't waste precious time searching for the right tools. Our curated Resource Marketplace provides a one-stop shop for the best APIs, UI kits, AI/ML models, and 3D assets. Each resource links directly to its documentation, so you can get started right away.
+
+### 5. Post-Hackathon Archiving
+Your work doesn't end when the hackathon does. The Archive feature allows you to document and store your past projects, creating a portfolio of your accomplishments that you can easily share and reference in the future.
+
+### 6. AI Blog Post Generator
+Need to create a dev diary or a final presentation? The Blog Generator can instantly create a well-written article on any topic, helping you communicate your project's story effectively.
+
+HackHub is more than just a set of tools; it's your partner in innovation. By handling the logistics, we empower you to focus on what you do best: building amazing things.
+    `
+};
+
 export function BlogGeneratorClient() {
-  const initialState: FormState = null;
+  const initialState: FormState = { message: 'success', data: initialBlog };
   const [state, formAction] = useActionState(createBlogPost, initialState);
   const { toast } = useToast();
 
