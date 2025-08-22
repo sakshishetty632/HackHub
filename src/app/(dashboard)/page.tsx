@@ -82,11 +82,13 @@ export default function DashboardPage() {
                 <div className="relative h-40 w-full">
                   <Image src={tool.image.src} alt={tool.title} fill className="object-cover" data-ai-hint={tool.image.hint} />
                 </div>
-                <CardHeader className="flex flex-row items-start gap-4">
-                  <div className="flex-shrink-0">{tool.icon}</div>
-                  <div className="flex-1">
-                    <CardTitle>{tool.title}</CardTitle>
-                    <CardDescription>{tool.description}</CardDescription>
+                <CardHeader>
+                  <div className="flex items-center gap-4">
+                    {tool.icon}
+                    <div>
+                      <CardTitle>{tool.title}</CardTitle>
+                      <CardDescription>{tool.description}</CardDescription>
+                    </div>
                   </div>
                 </CardHeader>
               </Card>
